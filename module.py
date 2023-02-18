@@ -1,4 +1,3 @@
-
 def get_line():
     s = list(input('Enter line: ').split())
     return (int(s[0]), s[1], s[2], int(s[3]), int(s[4]), int(s[5]))
@@ -24,6 +23,7 @@ def ChangeLine():
     index = int(input('Enter number line: ')) - 1
     data[index] = tuple(input('Enter your changes: ').split())
 
+
 def write_to_file(filename):
     with open(filename, 'w') as file:
         file.write(','.join(columns) + '\n')
@@ -42,6 +42,7 @@ def read_from_file(filename):
                 data.append((int(line[0]), line[1], line[2], int(line[3]), int(line[4]), int(line[5])))
     return columns, data
 
+
 global data, columns
 
 # columns = ('id', 'name', 'lastname', 'age', 'height', 'weight')
@@ -55,11 +56,52 @@ global data, columns
 
 columns, data = read_from_file('data.csv')
 
+# Функции, использующиеся для программы RomeNumber
+
+roman = dict(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
+romanBad = ['IV', 'IX', 'IL', 'IC', 'ID', 'IM']
+
+
+# LLXIXV
+
+# def IntFuerRoman(x):
+#     ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+#     tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+#     hunds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+#     thous = ["", "M", "MM", "MMM", "MMMM"]
+#
+#     t = thous[x // 1000]
+#     h = hunds[x // 100 % 10]
+#     te = tens[x // 10 % 10]
+#     o = ones[data % 10]
+#
+#     return t + h + te + o
 
 
 
-# Ниже идут функции и переменные не имеющие отношщения к DataBase
 
+
+def RomanFuerInt():
+    x = input("Enter Roman Number: ")
+    NormalNumber = 0
+    RomanNumber = ''
+    for i in x:
+        RomanNumber += i
+        for j in romanBad:
+            if j in RomanNumber:
+                NormalNumber -= 2
+                break
+        NormalNumber += int(roman[i])
+    return NormalNumber
+
+
+
+# z = input('enter number: ')
+#
+# print(RomanFuerInt(z))
+
+
+# Ниже идут функции и переменные не имеющие отнощения к DataBase
 
 
 def NumberCounter(x):
@@ -67,6 +109,7 @@ def NumberCounter(x):
     for i in str(x):
         count += 1
     return count
+
 
 def kleinerTaschenrechner():
     number1 = int(input('Enter number 1: '))
@@ -86,10 +129,3 @@ def kleinerTaschenrechner():
         return number1 / number2
     else:
         print('Only \n*\n/\n+\n-')
-
-
-
-
-
-
-
