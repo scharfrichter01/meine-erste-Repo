@@ -1,9 +1,11 @@
 
 from module import *
 
-
+# переводим из римской в арабскую
 print(RomanFuerInt())
-# print(IntFuerRoman())
+
+# переводим из арабской в римскую
+print(IntFuerRoman())
 
 
 

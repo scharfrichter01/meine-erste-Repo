@@ -56,29 +56,40 @@ global data, columns
 
 columns, data = read_from_file('data.csv')
 
+
+
+
 # Функции, использующиеся для программы RomeNumber
+
+
+
+
 
 roman = dict(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
 romanBad = ['IV', 'IX', 'IL', 'IC', 'ID', 'IM']
 
 
-# LLXIXV
-
-# def IntFuerRoman(x):
-#     ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
-#     tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
-#     hunds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
-#     thous = ["", "M", "MM", "MMM", "MMMM"]
-#
-#     t = thous[x // 1000]
-#     h = hunds[x // 100 % 10]
-#     te = tens[x // 10 % 10]
-#     o = ones[data % 10]
-#
-#     return t + h + te + o
-
-
-
+def IntFuerRoman():
+    x = int(input('Enter Arabic Number: '))
+    RomanNumber = ''
+    number = ['I', 'X', 'C', 'M']
+    i = 0
+    while x != 0:
+        j = x % 10
+        RomanNumber = number[i] * j + RomanNumber
+        x //= 10
+        i += 1
+    res = RomanNumber
+    res = res.replace('IIIIIIIII', 'IX')
+    res = res.replace('IIIII', 'V')
+    res = res.replace('IIII', 'IV')
+    res = res.replace('XXXXXXXXX', 'XC')
+    res = res.replace('XXXXX', 'L')
+    res = res.replace('XXXX', 'XL')
+    res = res.replace('CCCCCCCCC', 'CM')
+    res = res.replace('CCCCC', 'D')
+    res = res.replace('CCCC', 'CD')
+    return res
 
 
 def RomanFuerInt():
@@ -96,12 +107,14 @@ def RomanFuerInt():
 
 
 
-# z = input('enter number: ')
-#
-# print(RomanFuerInt(z))
 
 
-# Ниже идут функции и переменные не имеющие отнощения к DataBase
+
+# Ниже идут функции и переменные не имеющие отнощения к DataBase и Roman
+
+
+
+
 
 
 def NumberCounter(x):
